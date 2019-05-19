@@ -46,16 +46,34 @@ class Album extends Component {
         this.setState({ volume: this.audioElement.volume })
       }
     };
-    this.audioElement.addEventListener('timeupdate', this.eventListeners.timeupdate);
-    this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
-    this.audioElement.addEventListener('volumechange', this.eventListeners.volumechange);
+    this.audioElement.addEventListener(
+      'timeupdate',
+      this.eventListeners.timeupdate
+    );
+    this.audioElement.addEventListener(
+      'durationchange',
+      this.eventListeners.durationchange
+    );
+    this.audioElement.addEventListener(
+      'volumechange',
+      this.eventListeners.volumechange
+    );
   }
 
   componentWillUnmount() {
     this.audioElement.src = null;
-    this.audioElement.removeEventlistener('timeupdate', this.eventListeners.timeupdate);
-    this.audioElement.removeEventlistener('durationchange', this.eventListeners.durationchange);
-    this.audioElement.removeEventlistener('volumechange', this.eventListeners.volumechange);
+    this.audioElement.removeEventListener(
+			'timeupdate',
+			this.eventListeners.timeupdate
+		);
+    this.audioElement.removeEventListener(
+			'durationChange',
+			this.eventListeners.durationchange
+		);
+    this.audioElement.removeEventListener(
+      'volumechange',
+      this.eventListeners.volumechange
+    );
   }
 
   setSong(song) {
@@ -147,51 +165,76 @@ class Album extends Component {
 
   render() {
     return (
-      <section className='album'>
-        <section id='album-info'>
-          <img id='album-cover-art' src={this.state.album.albumCover} alt={this.state.album.title} />
-          <div className='album-details'>
-            <h1 id='album-title'>{this.state.album.title}</h1>
-            <h2 className='artist'>{this.state.album.artist}</h2>
-            <div id='release-info'>{this.state.album.releaseInfo}</div>
-          </div>
+      <section className='album container-fluid'>
+        <section className='row justify-content-center'>
+          <section id='album-info' className='col-12'>
+            <img
+              id='album-cover-art'
+              className='img-reduce'
+              src={this.state.album.albumCover}
+              alt={this.state.album.title}
+            />
+            <div className='album-details'>
+              <h1 id='album-title'>{this.state.album.title}</h1>
+              <h2 className='artist'>{this.state.album.artist}</h2>
+              <div id='release-info'>{this.state.album.releaseInfo}</div>
+            </div>
+          </section>
         </section>
-        <table id='songlist'>
-          <colgroup>
-            <col id='song-number-column' />
-            <col id='song-title-column' />
-            <col id='song-duration-column' />
-          </colgroup>
-          <tbody>
-          {this.state.album.songs.map( (song, index) =>
-            <tr
-              key={index}
-              className='song'
-              onClick={() => this.handleSongClick(song)}
-            >
-              <td
-                onMouseEnter={() => this.handleOnMouseEnter(index)}
-                onMouseLeave={() => this.handleOnMouseLeave()}
-              >{this.getPlayButton(index, song)}</td>
-              <td>{song.title}</td>
-              <td>{this.formatTime(song.duration)}</td>
-            </tr>
-            )
-          }
-          </tbody>
-        </table>
-        <PlayerBar
-          isPlaying={this.state.isPlaying}
-          currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          duration={this.audioElement.duration}
-          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-          handlePrevClick={() => this.handlePrevClick()}
-          handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}
-          handleVolumeChange={(e) => this.handleVolumeChange(e)}
-          formatTime={(time => this.formatTime(time))}
-        />
+        <section className='row justify-content-center'>
+          <section className='col-12'>
+            <table id='songlist'>
+              <colgroup>
+                <col id='song-number-column' />
+                <col id='song-title-column' />
+                <col id='song-duration-column' />
+              </colgroup>
+              <thead className='table-head'>
+                <tr>
+                  <td>Track No</td>
+                  <td>Song Title</td>
+                  <td>Duration</td>
+                </tr>
+              </thead>
+              <tbody className='song-list table'>
+              {this.state.album.songs.map( (song, index) =>
+                <tr
+                  key={index}
+                  className='song'
+                  onClick={() => this.handleSongClick(song)}
+                >
+                  <td
+                    onMouseEnter={() => this.handleOnMouseEnter(index)}
+                    onMouseLeave={() => this.handleOnMouseLeave()}
+                  >
+                    {this.getPlayButton(index, song)}
+                  </td>
+                  <td>{song.title}</td>
+                  <td>{this.formatTime(song.duration)}</td>
+                </tr>
+                )
+              }
+              </tbody>
+            </table>
+          </section>
+        </section>
+        <div className='row justify-content-center'>
+          <section className='album-player-bar col-10'>
+            <PlayerBar
+              isPlaying={this.state.isPlaying}
+              currentSong={this.state.currentSong}
+              currentTime={this.audioElement.currentTime}
+              duration={this.audioElement.duration}
+              handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+              handlePrevClick={() => this.handlePrevClick()}
+              handleNextClick={() => this.handleNextClick()}
+              handleTimeChange={(e) => this.handleTimeChange(e)}
+              handleVolumeChange={(e) => this.handleVolumeChange(e)}
+              formatTime={(time => this.formatTime(time))}
+            />
+          </section>
+        </div>
+
       </section>
     );
   }

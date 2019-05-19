@@ -1,3 +1,5 @@
+/*App*/
+
 body {
   margin: 0;
   padding: 0;
@@ -11,4 +13,194 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+table {
+  width: 100%;
+}
+
+thead {
+  font-weight: bold;
+}
+
+.site-bkgd {
+  max-width: 100%;
+  height: auto;
+  background: #F5F5F5;
+}
+
+.img-reduce {
+  max-width: 50%;
+  height: auto;
+}
+
+.bloc-jams-logo {
+  border: 5px;
+  padding: 10px;
+  margin: 10px;
+  opacity: .75;
+}
+
+.bloc-jams-logo:hover {
+  opacity: 1;
+  transition: .2s;
+}
+
+/*Navigation*/
+
+.nav-bkgd {
+  max-width: 100%;
+  height: auto;
+  background: url('./data/images/blur_bg_3.jpg') center center;
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+.navbar-text {
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+  color: black;
+}
+
+.navbar-text:hover {
+  color: white;
+  transition: .2s;
+}
+
+/*Landing*/
+
+.landing {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+}
+
+.hero-title {
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  color: black;
+}
+
+.hero-title:hover {
+  color: #7B1FA2;
+  transition: .4s;
+}
+
+.selling-points {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+/*Library*/
+
+.library {
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+.library-image {
+  border: 5px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.library-text {
+  color: black;
+}
+
+.library-text:hover {
+  color: #7B1FA2;
+  transition: .4s;
+}
+
+/*Album*/
+
+.album-details{
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  color: black;
+}
+
+#album-cover-art {
+  padding-bottom: 15px;
+}
+
+#album-info {
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+#release-info {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#songlist {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: black;
+}
+
+.album-player-bar {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+/*Player Bar*/
+
+.button-bar {
+  border: 5px;
+  margin: 10px;
+}
+
+.seek-bar {
+  appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.seek-bar:hover {
+  opacity: 1;
+}
+
+.seek-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+  background: #7B1FA2;
+  cursor: pointer;
+}
+
+.seek-bar::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 25%;
+  background: #7B1FA2;
+  cursor: pointer;
+}
+
+/*Title*/
+
+.title-image {
+  max-width: 100%;
+  height: auto;
+  border: 5px;
+  padding: 10px;
+  margin: 10px;
 }

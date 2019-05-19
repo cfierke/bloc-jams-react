@@ -13,11 +13,29 @@ constructor(props) {
       <section className='library'>
          {
           this.state.albums.map( (album, index) =>
-            <Link to={`/album/${album.slug}`} key={index}>
-              <img src={album.albumCover} alt={album.title} />
-              <div>{album.title}</div>
-              <div>{album.artist}</div>
-              <div>{album.songs.length}</div>
+            <Link
+              to={`/album/${album.slug}`}
+              key={index}
+              style={{ textDecoration: 'none' }}
+            >
+              <div className='container'>
+                <div className='row align-items-center'>
+
+                  <div className='col'>
+                    <img
+                      className='library-image img-reduce'
+                      src={album.albumCover}
+                      alt={album.title}
+                    />
+                  </div>
+
+                  <div className='library-text col'>
+                    <div>Title: {album.title}</div>
+                    <div>Artist: {album.artist}</div>
+                    <div>Songs: {album.songs.length}</div>
+                  </div>
+                </div>
+              </div>
             </Link>
           )
         }
